@@ -31,21 +31,23 @@ body {
   font-family: "Roboto Mono", monospace;
 }
 
-div {
+/* div {
   width: 100px;
   height: 100px;
-}
+} */
 
 .top-bar-container {
   background-color: var(--g400);
   width: 100%;
   display: flex;
   justify-content: space-between;
+  height: 64px;
 }
 .top-left {
   background-color: var(--g800);
   display: flex;
   justify-content: left;
+  align-items: center;
 }
 .running-count {
   background-color: var(--g200);
@@ -57,6 +59,7 @@ div {
   background-color: var(--g800);
   display: flex;
   justify-content: right;
+  align-items: center;
 }
 .reset {
   background-color: var(--white);
@@ -85,21 +88,33 @@ div {
 }
 .burned {
   background-color: var(--g600);
-  width: 15svw;
-  height: 20svw;
+  width: calc(2.5 * 5svw);
+  height: calc(3.5 * 5svw);
 }
 .current {
   background-color: var(--g400);
-  width: 15svw;
-  height: auto;
+  width: calc(2.5 * 5svw);
+  height: calc(3.5 * 5svw);
   border: 2px solid var(--y400);
-  padding: 12px;
-  border-radius: 18px;
+  padding: 2svw;
+  border-radius: 2svw;
+}
+.current img {
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .shoe {
   background-color: var(--g600);
-  width: 15svw;
-  height: 20svw;
+  width: calc(2.5 * 5svw);
+  height: calc(3.5 * 5svw);
 }
 
 .control-container {

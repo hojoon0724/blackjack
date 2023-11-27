@@ -22,6 +22,7 @@ function makeCardArray() {
 
 makeCardArray();
 
+// Show any random card, with repeats
 const nextButton = document.querySelector("#next");
 nextButton.addEventListener("click", () => {
   const randomIndex = Math.ceil(Math.random() * cardDeck.length);
