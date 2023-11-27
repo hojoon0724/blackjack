@@ -17,13 +17,16 @@
     <div class="top-bar-container">
         <div class="top-left">
             <div class="running-count">
-                Running Count: <div class="rcount">3</div>
+                Running Count: <div class="rcount" id="run"></div>
             </div>
             <div class="card-count">
-                Card Count: <div class="ccount">20</div>
+                Card Count: <div class="ccount" id="the-count"></div>
             </div>
         </div>
         <div class="top-right">
+            <div class="decks">
+                Decks: <input id="deck-amount" placeholder="1" type="number" value="1">
+            </div>
             <div class="reset">
                 <button class="reset-btn" id="reset">
                     Shuffle
@@ -40,8 +43,6 @@
     </div>
 
     <div class="main-area-container">
-        <div class="show-full-deck" id="full-deck">
-        </div>
         <div class="cards-container">
             <div class="burned">
 
@@ -57,6 +58,8 @@
             <button class="control" id="next">
                 Next
             </button>
+        </div>
+        <div class="show-full-deck" id="full-deck">
         </div>
     </div>
 </body>
