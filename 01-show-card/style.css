@@ -29,6 +29,7 @@ body {
   background-color: var(--table-green);
   color: var(--white);
   font-family: "Roboto Mono", monospace;
+  margin: 0px;
 }
 
 /* div {
@@ -37,26 +38,27 @@ body {
 } */
 
 .top-bar-container {
-  background-color: var(--g400);
+  background-color: var(--g800);
   width: 100%;
   display: flex;
   justify-content: space-between;
   height: 64px;
 }
 .top-left {
-  background-color: var(--g800);
+  /* background-color: var(--g800); */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: left;
+  padding-left: 1ch;
 }
 .running-count {
-  background-color: var(--g500);
+  /* background-color: var(--g500); */
   display: flex;
   justify-content: space-between;
 }
 .card-count {
-  background-color: var(--g500);
+  /* background-color: var(--g500); */
   display: flex;
   justify-content: space-between;
 }
@@ -72,27 +74,32 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: end;
+  padding-right: 1ch;
 }
 .reset {
   /* background-color: var(--y700); */
   width: 12ch;
-  margin-bottom: 1ch;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
 }
 .reset-btn {
   width: 100%;
   border: 0px;
-  height: 100%;
+  height: 80%;
   border-radius: 1vw;
+  background-color: var(--g100);
+  box-sizing: border-box;
+  margin: auto;
+  font-family: "Roboto Mono";
+  font-size: 1rem;
+  transition: 0.2s;
 }
-.start {
-  /* background-color: var(--y900); */
-  width: 12ch;
-}
-.start-btn {
-  width: 100%;
-  border: 0px;
-  height: 100%;
-  border-radius: 1vw;
+
+.reset-btn:active {
+  background-color: var(--g400);
+  transition: 0.2s;
 }
 
 .main-area-container {
@@ -112,6 +119,7 @@ body {
   align-items: center;
   padding-top: 15svh;
   padding-bottom: 15svh;
+  margin: 0ch;
 }
 .burned {
   background-color: var(--g600);
@@ -167,7 +175,9 @@ body {
   display: flex;
   justify-content: space-between;
   height: 20vh;
-  margin-left: 80px;
+  margin-left: calc(80px + 1ch);
+  margin-right: 1ch;
+
   /* display: grid; */
   /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
   /* position: relative; */

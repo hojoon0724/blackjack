@@ -2,7 +2,6 @@ const suits = ["01", "02", "03", "04"];
 const cardNums = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11J", "12Q", "13K"];
 
 let cardDeck = [];
-const orderedCardDeck = [];
 
 let cardObjectTemplate = {
   cardName: "",
@@ -16,43 +15,36 @@ function makeCardArray() {
         cardName: `${s}-${n}`,
         cardSvg: `../SVGs/${s}-${n}.svg`,
       };
-      orderedCardDeck.push(cardObjectTemplate);
+      cardDeck.push(cardObjectTemplate);
     });
   });
 }
 
 makeCardArray();
-cardDeck = orderedCardDeck;
 
-// Show any random card, with repeats
+let cardArrayIndexNum = -1;
+const currentCard = document.querySelector("#current-show");
 const nextButton = document.querySelector("#next");
 nextButton.addEventListener("click", () => {
-  const randomIndex = Math.ceil(Math.random() * cardDeck.length);
-  const currentCard = document.querySelector("#current-show");
-  currentCard.innerHTML = `<img src="${cardDeck[randomIndex].cardSvg}">`;
+  cardArrayIndexNum++;
+  currentCard.innerHTML = `<img src="${cardDeck[cardArrayIndexNum].cardSvg}">`;
 });
 
 let shuffledDeck = [];
 function shuffle(deck) {
   for (i = deck.length - 1; i >= 0; i--) {
     let j = Math.floor(Math.random() * i);
-    // shuffledDeck.push(cardDeck[grabIndex]);
-    // cardDeck.splice(grabIndex, 1);
     [deck[i], deck[j]] = [deck[j], deck[i]];
   }
   console.log(deck);
 }
-console.log(cardDeck);
-shuffle(cardDeck);
 
-console.log(cardDeck);
-/*
 function showDeck() {
   const fullDeckDiv = document.querySelector("#full-deck");
-  for (i = 0; i < shuffledDeck.length; i++) {
+  for (i = 0; i < cardDeck.length; i++) {
     let card = document.createElement("img");
     // console.log(card, i);
-    card.setAttribute("src", `${shuffledDeck[i].cardSvg}`);
+    card.setAttribute("src", `${cardDeck[i].cardSvg}`);
     fullDeckDiv.appendChild(card);
     console.log("show deck done");
   }
@@ -65,13 +57,11 @@ function clearCards() {
 
 const reset = document.querySelector("#reset");
 reset.addEventListener("click", () => {
-  makeCardArray();
+  cardArrayIndexNum = -1;
+  currentCard.innerHTML = "";
   clearCards();
-  shuffle();
+  shuffle(cardDeck);
   showDeck();
 });
 
-// showDeck();
-
-// console.log(shuffledDeck);
-*/
+showDeck();
