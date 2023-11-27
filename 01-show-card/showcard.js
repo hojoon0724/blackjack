@@ -21,7 +21,6 @@ function makeCardArray() {
 }
 
 makeCardArray();
-console.log(cardDeck);
 
 const nextButton = document.querySelector("#next");
 nextButton.addEventListener("click", () => {
