@@ -33,27 +33,20 @@ nextButton.addEventListener("click", () => {
 });
 
 let shuffledDeck = [];
-function shuffle() {
-  shuffledDeck = [];
-  console.log("beforeCRD", cardDeck);
-  console.log("beforeORD", orderedCardDeck);
-  console.log("beforeSHF", shuffledDeck);
-
-  for (i = cardDeck.length - 1; i >= 0; i--) {
-    let grabIndex = Math.floor(Math.random() * i);
-    // console.log(cardDeck[grabIndex]);
-    shuffledDeck.push(cardDeck[grabIndex]);
-    cardDeck.splice(grabIndex, 1);
+function shuffle(deck) {
+  for (i = deck.length - 1; i >= 0; i--) {
+    let j = Math.floor(Math.random() * i);
+    // shuffledDeck.push(cardDeck[grabIndex]);
+    // cardDeck.splice(grabIndex, 1);
+    [deck[i], deck[j]] = [deck[j], deck[i]];
   }
-
-  console.log("shuffle done");
-  console.log("afterCRD", cardDeck);
-  console.log("afterORD", orderedCardDeck);
-  console.log("afterSHF", shuffledDeck);
+  console.log(deck);
 }
+console.log(cardDeck);
+shuffle(cardDeck);
 
-shuffle();
-
+console.log(cardDeck);
+/*
 function showDeck() {
   const fullDeckDiv = document.querySelector("#full-deck");
   for (i = 0; i < shuffledDeck.length; i++) {
@@ -81,3 +74,4 @@ reset.addEventListener("click", () => {
 // showDeck();
 
 // console.log(shuffledDeck);
+*/
