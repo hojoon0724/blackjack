@@ -109,7 +109,6 @@ const leftShow = document.querySelector("#left-show");
 const middleShow = document.querySelector("#middle-show");
 const rightShow = document.querySelector("#right-show");
 const nextButton = document.querySelector("#next");
-middleShow.setAttribute("class", "showing");
 
 // -----------------------------------------------------
 // adapt to # of open hands
@@ -120,7 +119,13 @@ middleShow.setAttribute("class", "showing");
 // -----------------------------------------------------
 nextButton.addEventListener("click", () => {
   cardArrayIndexNum++;
-  middleShow.innerHTML = `<img src="${cardDeck[cardArrayIndexNum].cardSvg}">`;
+
+  //! deals the cards
+  let cardDealt = document.createElement("img");
+  cardDealt.setAttribute("src", `${cardDeck[cardArrayIndexNum].cardSvg}`);
+  cardDealt.setAttribute("class", "showing");
+  middleShow.appendChild(cardDealt);
+
   addUpTheCount();
   showRunningCount();
   showTheCount();
