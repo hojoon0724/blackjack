@@ -10,17 +10,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400;600;700&display=swap"
         rel="stylesheet">
-    <script src="./showcard.js" defer></script>
+    <script src="./showpair.js" defer></script>
 </head>
 
 <body>
     <div class="top-bar-container">
         <div class="top-left">
             <div class="running-count">
-                Running Count: <div class="rcount" id="run"></div>
+                Running Count: <div class="rcount" id="run">0</div>
             </div>
             <div class="card-count">
-                Card Count: <div class="ccount" id="the-count"></div>
+                Card Count: <div class="ccount" id="the-count">0</div>
             </div>
         </div>
         <div class="top-right">
@@ -44,13 +44,13 @@
 
     <div class="main-area-container">
         <div class="cards-container">
-            <div class="left">
+            <div class="left" id="left-show">
 
             </div>
             <div class="middle" id="middle-show">
                 <!-- <img src="../SVGs/01-12Q.svg"> -->
             </div>
-            <div class="right">
+            <div class="right" id="right-show">
 
             </div>
         </div>
@@ -59,7 +59,11 @@
                 Next
             </button>
         </div>
-        <div class="show-full-deck" id="full-deck">
+        <div class="full-deck-container">
+
+            <div class="show-full-deck" id="full-deck">
+
+            </div>
         </div>
     </div>
 </body>

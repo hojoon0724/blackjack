@@ -17,7 +17,7 @@ function makeCardArray(deckCount) {
     cardNums.forEach((n, i) => {
       if (i > 8 || i === 0) {
         v = -1;
-      } else if (i < 5) {
+      } else if (i < 6) {
         v = 1;
       } else {
         v = 0;
@@ -34,9 +34,8 @@ function makeCardArray(deckCount) {
   });
 }
 
-makeCardArray(0);
+makeCardArray(1);
 
-let shuffledDeck = [];
 function shuffle(deck) {
   for (i = deck.length - 1; i >= 0; i--) {
     let j = Math.floor(Math.random() * i);
@@ -51,7 +50,9 @@ function showDeck() {
     let card = document.createElement("img");
     // console.log(card, i);
     card.setAttribute("src", `${cardDeck[i].cardSvg}`);
-    fullDeckDiv.appendChild(card);
+    setTimeout(() => {
+      fullDeckDiv.appendChild(card);
+    }, i * 20);
     console.log("show deck done");
   }
 }
@@ -76,6 +77,16 @@ function getDeckAmount() {
   return deckInput.value;
 }
 
+let theCount = 0;
+function addUpTheCount() {
+  theCount += cardDeck[cardArrayIndexNum].cardValue;
+}
+
+showDeck();
+
+// -----------------------------------------------------
+
+// shuffle
 const reset = document.querySelector("#reset");
 reset.addEventListener("click", () => {
   cardDeck = [];
@@ -90,19 +101,16 @@ reset.addEventListener("click", () => {
   showTheCount();
 });
 
-showDeck();
-
-let theCount = 0;
-function addUpTheCount() {
-  theCount += cardDeck[cardArrayIndexNum].cardValue;
-}
-
 let cardArrayIndexNum = -1;
-const currentCard = document.querySelector("#middle-show");
+const leftShow = document.querySelector("#left-show");
+const middleShow = document.querySelector("#middle-show");
+const rightShow = document.querySelector("#right-show");
 const nextButton = document.querySelector("#next");
+
+// nextButton
 nextButton.addEventListener("click", () => {
   cardArrayIndexNum++;
-  currentCard.innerHTML = `<img src="${cardDeck[cardArrayIndexNum].cardSvg}">`;
+  middleShow.innerHTML = `<img src="${cardDeck[cardArrayIndexNum].cardSvg}">`;
   addUpTheCount();
   showRunningCount();
   showTheCount();
