@@ -125,28 +125,61 @@ body {
   margin-top: 24px;
   justify-content: space-around;
   align-items: center;
-  padding-top: 15svh;
-  padding-bottom: 15svh;
+  padding-top: 20svh;
+  padding-bottom: 10svh;
   margin: 0ch;
 }
-.left {
+.left,
+.middle,
+.right {
   background-color: var(--g400);
   width: calc(2.5 * 5svw);
   height: calc(3.5 * 5svw);
-  border: 2px solid var(--y400);
+  /* border: 2px solid var(--y400); */
   padding: 2svw;
   border-radius: 2svw;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
 }
-.middle {
-  background-color: var(--g400);
-  width: calc(2.5 * 5svw);
-  height: calc(3.5 * 5svw);
+
+.on {
   border: 2px solid var(--y400);
-  padding: 2svw;
-  border-radius: 2svw;
 }
-.current img {
+
+.off {
+  border: 2px solid var(--g400);
+}
+
+.showing {
+  width: 75%;
   animation: fadeIn 0.5s;
+  /* border: 1px solid red; */
+}
+
+.showing:first-child {
+  top: 0%;
+  position: relative;
+}
+.showing:nth-child(2) {
+  top: -30%;
+  left: -50%;
+  position: relative;
+}
+.showing:nth-child(3) {
+  top: -60%;
+  left: -100%;
+  position: relative;
+}
+.showing:nth-child(4) {
+  top: -90%;
+  left: -150%;
+  position: relative;
+}
+.showing:nth-child(5) {
+  top: -120%;
+  left: -200%;
+  position: relative;
 }
 
 @keyframes fadeIn {
@@ -156,14 +189,6 @@ body {
   100% {
     opacity: 1;
   }
-}
-.right {
-  background-color: var(--g400);
-  width: calc(2.5 * 5svw);
-  height: calc(3.5 * 5svw);
-  border: 2px solid var(--y400);
-  padding: 2svw;
-  border-radius: 2svw;
 }
 
 .control-container {

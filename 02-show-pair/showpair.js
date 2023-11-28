@@ -85,14 +85,14 @@ function addUpTheCount() {
 showDeck();
 
 // -----------------------------------------------------
-
 // shuffle
+// -----------------------------------------------------
 const reset = document.querySelector("#reset");
 reset.addEventListener("click", () => {
   cardDeck = [];
   makeCardArray(getDeckAmount());
   cardArrayIndexNum = -1;
-  currentCard.innerHTML = "";
+  middleShow.innerHTML = "";
   clearCards();
   shuffle(cardDeck);
   showDeck();
@@ -101,13 +101,23 @@ reset.addEventListener("click", () => {
   showTheCount();
 });
 
+// -----------------------------------------------------
+// card show areas
+// -----------------------------------------------------
 let cardArrayIndexNum = -1;
 const leftShow = document.querySelector("#left-show");
 const middleShow = document.querySelector("#middle-show");
 const rightShow = document.querySelector("#right-show");
 const nextButton = document.querySelector("#next");
+middleShow.setAttribute("class", "showing");
 
+// -----------------------------------------------------
+// adapt to # of open hands
+// -----------------------------------------------------
+
+// -----------------------------------------------------
 // nextButton
+// -----------------------------------------------------
 nextButton.addEventListener("click", () => {
   cardArrayIndexNum++;
   middleShow.innerHTML = `<img src="${cardDeck[cardArrayIndexNum].cardSvg}">`;
