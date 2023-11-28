@@ -82,7 +82,7 @@ function addUpTheCount() {
   theCount += cardDeck[cardArrayIndexNum].cardValue;
 }
 
-showDeck();
+// showDeck();
 
 // -----------------------------------------------------
 // shuffle
@@ -113,6 +113,14 @@ const nextButton = document.querySelector("#next");
 // -----------------------------------------------------
 // adapt to # of open hands
 // -----------------------------------------------------
+
+// todo - click to turn on/off the player
+const playerDiv = document.querySelectorAll(".player");
+playerDiv.forEach(playerArea) {
+  playerArea.addEventListener("click", () => {
+    playerDiv.hasAttributes("class", "player on");
+  });
+}
 
 // -----------------------------------------------------
 // nextButton
