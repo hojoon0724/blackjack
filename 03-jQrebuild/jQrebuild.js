@@ -45,21 +45,19 @@ function shuffle(deck) {
 }
 
 function showDeck() {
-  const fullDeckDiv = document.querySelector("#full-deck");
+  const $fullDeckDiv = $("#full-deck");
   for (i = 0; i < cardDeck.length; i++) {
-    let card = document.createElement("img");
-    // console.log(card, i);
-    card.setAttribute("src", `${cardDeck[i].cardSvg}`);
+    const $card = $("<img>");
+    $card.attr("src", `${cardDeck[i].cardSvg}`);
     setTimeout(() => {
-      fullDeckDiv.appendChild(card);
+      $fullDeckDiv.append($card);
     }, i * 20);
-    console.log("show deck done");
   }
 }
 
 function clearCards() {
-  const fullDeckDiv = document.querySelector("#full-deck");
-  fullDeckDiv.innerHTML = "";
+  const $fullDeckDiv = $("#full-deck");
+  $fullDeckDiv.html("");
 }
 
 const runCount = document.querySelector("#run");
@@ -105,15 +103,15 @@ reset.addEventListener("click", () => {
 // card show areas
 // -----------------------------------------------------
 let cardArrayIndexNum = -1;
-const leftShow = document.querySelector("#left-show");
-const middleShow = document.querySelector("#middle-show");
-const rightShow = document.querySelector("#right-show");
+const leftShow = document.querySelector("#player-left-show");
+const middleShow = document.querySelector("#player-middle-show");
+const rightShow = document.querySelector("#player-right-show");
 const nextButton = document.querySelector("#next");
 
 // -----------------------------------------------------
 // adapt to # of open hands
 // -----------------------------------------------------
-
+/*
 // todo - click to turn on/off the player
 const playerDiv = document.querySelectorAll(".player");
 playerDiv.forEach(playerArea);
@@ -122,6 +120,7 @@ playerDiv.forEach(playerArea);
     playerDiv.hasAttributes("class", "player on");
   });
 }
+*/
 
 // -----------------------------------------------------
 // nextButton

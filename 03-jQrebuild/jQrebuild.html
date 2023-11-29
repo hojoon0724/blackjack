@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="./style.css">
+    <script src="./jQrebuild.js" defer></script>
+</head>
+
+<body>
+    <div class="top-bar-container">
+        <div class="top-left">
+            <div class="running-count-container">
+                Running Count: <div class="rcount" id="run">0</div>
+            </div>
+            <div class="card-count-container">
+                Card Count: <div class="ccount" id="the-count">0</div>
+            </div>
+        </div>
+        <div class="top-right">
+            <div class="decks">
+                Decks: <input id="deck-amount" placeholder="1" type="number" value="1">
+            </div>
+            <div class="reset">
+                <button class="reset-btn" id="reset">
+                    Shuffle
+                </button>
+
+            </div>
+            <!-- <div class="start">
+                <button class="start-btn" id="start">
+                    Start
+                </button>
+
+            </div> -->
+        </div>
+    </div>
+
+    <div class="main-area-container">
+        <div class="cards-container">
+            <div class="player left off" id="player-left-show">
+                <!-- <img class="showing" src="../SVGs/01-12Q.svg">
+                <img class="showing" src="../SVGs/01-12Q.svg">
+                <img class="showing" src="../SVGs/01-12Q.svg">
+                <img class="showing" src="../SVGs/01-12Q.svg">
+                <img class="showing" src="../SVGs/01-12Q.svg"> -->
+
+            </div>
+            <div class="player middle on" id="player-middle-show">
+                <!-- <img class="showing" src="../SVGs/01-12Q.svg">
+                <img class="showing" src="../SVGs/01-12Q.svg">
+                <img class="showing" src="../SVGs/01-12Q.svg">
+                <img class="showing" src="../SVGs/01-12Q.svg">
+                <img class="showing" src="../SVGs/01-12Q.svg"> -->
+
+            </div>
+            <div class="player right off" id="player-right-show">
+                <!-- <img class="showing" src="../SVGs/01-12Q.svg">
+                <img class="showing" src="../SVGs/01-12Q.svg">
+                <img class="showing" src="../SVGs/01-12Q.svg">
+                <img class="showing" src="../SVGs/01-12Q.svg">
+                <img class="showing" src="../SVGs/01-12Q.svg"> -->
+
+            </div>
+        </div>
+        <div class="control-container">
+            <button class="control" id="next">
+                Next
+            </button>
+        </div>
+        <div class="full-deck-container">
+            <div class="show-full-deck" id="full-deck">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
