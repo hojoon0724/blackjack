@@ -5,10 +5,11 @@ let cardDeck = [];
 
 let cardObjectTemplate = {
   cardName: "",
+  cardValue: "",
   // 2-6 = +1
   // 7-9 = 0
   // 10-A = -1
-  cardValue: "",
+  mitCtValue: "",
   cardSvg: "",
 };
 
@@ -24,17 +25,30 @@ function makeCardArray(deckCount) {
       }
       cardObjectTemplate = {
         cardName: `${s}-${n}`,
-        cardValue: v,
+        mitCtValue: v,
         cardSvg: `../SVGs/${s}-${n}.svg`,
       };
       for (repetition = deckCount; repetition > 0; repetition--) {
+        cardObjectTemplate.value = valueByName(cardObjectTemplate.cardName);
         cardDeck.push(cardObjectTemplate);
       }
     });
   });
 }
 
-makeCardArray(1);
+function valueByName(card) {
+  let newValue = card.split("-")[1];
+  if (newValue === "11J" || newValue === "12Q" || newValue === "13K") {
+    // console.log(newValue);
+    newValue = 10;
+    return newValue;
+  }
+  // return +card.split("-")[1];
+  return Number(card.split("-")[1]);
+  // return parseInt(card.split("-")[1]);
+}
+
+makeCardArray(2);
 
 function shuffle(deck) {
   for (i = deck.length - 1; i >= 0; i--) {
@@ -77,7 +91,7 @@ function getDeckAmount() {
 
 let theCount = 0;
 function addUpTheCount() {
-  theCount += cardDeck[cardArrayIndexNum].cardValue;
+  theCount += cardDeck[cardArrayIndexNum].mitCtValue;
 }
 
 showDeck();
@@ -111,16 +125,21 @@ const nextButton = document.querySelector("#next");
 // -----------------------------------------------------
 // adapt to # of open hands
 // -----------------------------------------------------
-/*
+
 // todo - click to turn on/off the player
-const playerDiv = document.querySelectorAll(".player");
-playerDiv.forEach(playerArea);
-{
-  playerArea.addEventListener("click", () => {
-    playerDiv.hasAttributes("class", "player on");
+// Gathered all the div.player
+const playerDiv = document.querySelectorAll(".bet-area");
+// Iterate over each player of playerDiv
+playerDiv.forEach((player) => {
+  // Adding event listener to all the contents of items gathered at "playerDiv"
+  player.addEventListener("click", (event) => {
+    const target = event.target;
+    target.classList.toggle("on");
+    console.log(target);
+
+    // playerDiv.hasAttributes("class", "player on");
   });
-}
-*/
+});
 
 // -----------------------------------------------------
 // nextButton
