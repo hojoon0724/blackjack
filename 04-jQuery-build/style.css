@@ -1,3 +1,7 @@
+div {
+  border: 1px red solid;
+}
+
 :root {
   --table-green: #01422c;
   --white: #efefef;
@@ -117,32 +121,46 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: auto;
+  height: 90svh;
 }
 
 .cards-container {
   background-color: var(--g800);
   display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 30svh;
+  height: 80svh;
   margin-top: 24px;
+  justify-content: space-between;
+  align-items: center;
+  /* padding-top: 20svh;
+  padding-bottom: 60px; */
+  margin: 0ch;
+}
+
+.dealer {
+  margin-top: 5svh;
+}
+
+.players {
+  width: 100%;
+  display: flex;
   justify-content: space-around;
   align-items: end;
-  padding-top: 20svh;
-  padding-bottom: 60px;
-  margin: 0ch;
+  margin-bottom: 5svh;
 }
 
 .player-container {
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
-.player-cards {
-  position: relative;
+.cards-in-play {
 }
 
 .showing {
-  position: absolute;
+  /* position: absolute; */
   width: var(--cardsize);
   animation: fadeIn 0.5s;
 }
@@ -156,7 +174,8 @@ body {
   border-radius: 12px;
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: center;
+  align-self: center;
 }
 
 .on {
@@ -179,7 +198,6 @@ body {
 .control-container {
   background-color: var(--g900);
   width: 100%;
-  height: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -196,7 +214,8 @@ body {
 }
 
 .full-deck-container {
-  margin: 24px;
+  margin: 4px 36px;
+  height: 10px;
 }
 
 .show-full-deck {

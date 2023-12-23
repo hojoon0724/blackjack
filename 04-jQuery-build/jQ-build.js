@@ -1,17 +1,19 @@
 const suits = ["01", "02", "03", "04"];
 const cardNums = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11J", "12Q", "13K"];
-
 let cardDeck = [];
 
 let cardObjectTemplate = {
   cardName: "",
   cardValue: "",
-  // 2-6 = +1
-  // 7-9 = 0
-  // 10-A = -1
   mitCtValue: 0,
   cardSvg: "",
 };
+
+let cardArrayIndexNum = -1;
+const $leftShow = $("#player-left-show");
+const $middleShow = $("#player-middle-show");
+const $rightShow = $("#player-right-show");
+const $nextButton = $("#next");
 
 function makeCardArray(deckCount) {
   suits.forEach((s) => {
@@ -47,8 +49,6 @@ function valueByName(card) {
   // return parseInt(card.split("-")[1]);
 }
 
-makeCardArray(2);
-
 function shuffle(deck) {
   for (i = deck.length - 1; i >= 0; i--) {
     let j = Math.floor(Math.random() * i);
@@ -68,14 +68,16 @@ function showDeck() {
   }
 }
 
-function clearCards() {
+makeCardArray(2);
+
+function clearDeckCards() {
   const $fullDeckDiv = $("#full-deck");
   $fullDeckDiv.html("");
 }
 
 const $runCount = $("#run");
 function showRunningCount() {
-  $runCount.text = cardArrayIndexNum + 1;
+  $runCount.html(`${cardArrayIndexNum + 1}`);
 }
 
 function showTheCount() {
@@ -85,13 +87,23 @@ function showTheCount() {
 
 function getDeckAmount() {
   const $deckInput = $("#deck-amount");
-  return $deckInput.value;
+  // console.log($deckInput[0].value);
+  // return $deckInput.value;
 }
+
+function clearCardsInPlay() {
+  const $cardsInPlay = $(".cards-in-play");
+  $cardsInPlay.html("");
+}
+
+getDeckAmount();
 
 let $theCount = 0;
 function addUpTheCount() {
   $theCount += cardDeck[cardArrayIndexNum].mitCtValue;
 }
+
+let $rCount = 0;
 
 showDeck();
 
@@ -100,56 +112,30 @@ showDeck();
 // -----------------------------------------------------
 const reset = document.querySelector("#reset");
 reset.addEventListener("click", () => {
-  cardDeck = [];
   makeCardArray(getDeckAmount());
-  cardArrayIndexNum = -1;
-  $middleShow.innerHTML = "";
-  clearCards();
+  clearDeckCards();
+  clearCardsInPlay();
   shuffle(cardDeck);
   showDeck();
-  $runCount.innerText = 0;
-  $theCount = 0;
   showTheCount();
+  $theCount = 0;
+  $runCount.innerText = 0;
+  cardArrayIndexNum = -1;
+  $middleShow.innerHTML = "";
+  console.log(cardDeck[18].value);
 });
 
 // -----------------------------------------------------
-// card show areas
-// -----------------------------------------------------
-let cardArrayIndexNum = -1;
-const $leftShow = $("#player-left-show");
-const $middleShow = $("#player-middle-show");
-const $rightShow = $("#player-right-show");
-const $nextButton = $("#next");
-
-// -----------------------------------------------------
-// adapt to # of open hands
+// Next card
 // -----------------------------------------------------
 
-// todo - click to turn on/off the player
-// Gathered all the div.player
-const playerDiv = document.querySelectorAll(".bet-area");
-// Iterate over each player of playerDiv
-playerDiv.forEach((player) => {
-  // Adding event listener to all the contents of items gathered at "playerDiv"
-  player.on("click", (event) => {
-    const target = event.target;
-    target.classList.toggle("on");
-    console.log(target);
-
-    // playerDiv.hasAttributes("class", "player on");
-  });
-});
-
-// -----------------------------------------------------
-// nextButton
-// -----------------------------------------------------
 $nextButton.on("click", () => {
-  console.log("clicked next");
   cardArrayIndexNum++;
 
   //! deals the cards
-  let $cardDealt = $("img");
+  let $cardDealt = $("<img>");
   $cardDealt.attr("src", `${cardDeck[cardArrayIndexNum].cardSvg}`);
+
   $cardDealt.addClass("showing");
   $middleShow.append($cardDealt);
 

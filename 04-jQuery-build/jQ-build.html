@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./jQ-build.js" defer></script>
+  </head>
+
+  <body>
+    <div class="top-bar-container">
+      <div class="top-left">
+        <div class="running-count-container">
+          Running Count:
+          <div class="rcount" id="run">0</div>
+        </div>
+        <div class="card-count-container">
+          Card Count:
+          <div class="ccount" id="the-count">0</div>
+        </div>
+      </div>
+      <div class="top-right">
+        <div class="decks">Decks: <input id="deck-amount" placeholder="1" type="number" value="2" /></div>
+        <div class="reset">
+          <button class="reset-btn" id="reset">Shuffle</button>
+        </div>
+        <!-- <div class="start">
+                <button class="start-btn" id="start">
+                    Start
+                </button>
+
+            </div> -->
+      </div>
+    </div>
+
+    <div class="main-area-container">
+      <div class="cards-container">
+        <div class="dealer">
+          <div class="dealer-container">
+            <div class="dealer-cards">cards</div>
+          </div>
+        </div>
+
+        <div class="players">
+          <div class="player-container">
+            <div class="cards-in-play left" id="player-left-show"></div>
+            <div class="bet-area">Bet</div>
+          </div>
+
+          <div class="player-container">
+            <div class="cards-in-play middle" id="player-middle-show"></div>
+            <div class="bet-area">Bet</div>
+          </div>
+
+          <div class="player-container">
+            <div class="cards-in-play right" id="player-right-show"></div>
+            <div class="bet-area">Bet</div>
+          </div>
+        </div>
+      </div>
+      <div class="control-container">
+        <button class="control" id="next">Next</button>
+      </div>
+      <div class="full-deck-container">
+        <div class="show-full-deck" id="full-deck"></div>
+      </div>
+    </div>
+  </body>
+</html>
