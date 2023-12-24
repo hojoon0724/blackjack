@@ -75,6 +75,15 @@ body {
   text-align: right;
 }
 
+.ccount {
+  opacity: 0;
+  transition: 0.5s ease-in-out;
+}
+
+.ccount:hover {
+  opacity: 1;
+}
+
 .top-right {
   background-color: var(--g800);
   display: flex;
