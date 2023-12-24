@@ -13,7 +13,10 @@ let cardArrayIndexNum = -1;
 const $leftShow = $("#player-left-show");
 const $middleShow = $("#player-middle-show");
 const $rightShow = $("#player-right-show");
-const $nextButton = $("#next");
+const $doubleButton = $("#double");
+const $hitButton = $("#hit");
+const $standButton = $("#stand");
+const $dealButton = $("#deal");
 
 function makeCardArray(deckCount) {
   suits.forEach((s) => {
@@ -129,7 +132,7 @@ reset.addEventListener("click", () => {
 // Next card
 // -----------------------------------------------------
 
-$nextButton.on("click", () => {
+$hitButton.on("click", () => {
   cardArrayIndexNum++;
 
   //! deals the cards

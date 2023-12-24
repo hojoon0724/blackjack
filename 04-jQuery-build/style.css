@@ -166,12 +166,18 @@ body {
 }
 
 .cards-in-play {
+  height: 30vh;
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .showing {
-  /* position: absolute; */
-  width: var(--cardsize);
   animation: fadeIn 0.5s;
+  width: var(--cardsize);
+  /* margin-left: -50px; */
 }
 
 .bet-area {
@@ -213,8 +219,8 @@ body {
 }
 
 .control {
-  height: 2rem;
-  padding: 1rem 3rem;
+  width: 6rem;
+  padding: 0.5rem;
   align-items: center;
   height: auto;
   border-radius: 12px;
