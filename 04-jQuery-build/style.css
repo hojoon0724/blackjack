@@ -168,16 +168,21 @@ body {
 .cards-in-play {
   height: 30vh;
   width: 400px;
+  /* position: absolute; */
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
 .showing {
+  position: absolute;
   animation: fadeIn 0.5s;
   width: var(--cardsize);
   /* margin-left: -50px; */
+}
+.showing:nth-child(odd) {
+  transform: translateX(20px) translateY(-20px);
 }
 
 .bet-area {

@@ -111,6 +111,43 @@ let $rCount = 0;
 showDeck();
 
 // -----------------------------------------------------
+// Set Player Card Values and Formatting
+// -----------------------------------------------------
+let playerCurrentGameCards = 0;
+const cardOffsetValue = -20;
+let playerCardsArray = [];
+
+function addUpPlayersCurrentGameCards() {
+  playerCardsArray.push(cardDeck[cardArrayIndexNum].value);
+  console.log(cardDeck[cardArrayIndexNum].value);
+
+  console.log(playerCardsArray);
+  for (i = 0; playerCardsArray; i++) {
+    let playerCurrentGameCount = 0;
+    playerCurrentGameCount += playerCardsArray[i];
+  }
+  console.log(playerCurrentGameCount);
+}
+
+function displayPlayersCardsOffset() {}
+
+$hitButton.on("click", () => {
+  cardArrayIndexNum++;
+  addUpPlayersCurrentGameCards();
+
+  //! deals the cards
+  let $cardDealt = $("<img>");
+  $cardDealt.attr("src", `${cardDeck[cardArrayIndexNum].cardSvg}`);
+
+  $cardDealt.addClass("showing");
+  $middleShow.append($cardDealt);
+
+  addUpTheCount();
+  showRunningCount();
+  showTheCount();
+});
+
+// -----------------------------------------------------
 // shuffle
 // -----------------------------------------------------
 const reset = document.querySelector("#reset");
@@ -125,24 +162,10 @@ reset.addEventListener("click", () => {
   $runCount.innerText = 0;
   cardArrayIndexNum = -1;
   $middleShow.innerHTML = "";
+  playerCardsArray = [];
   console.log(cardDeck[18].value);
 });
 
 // -----------------------------------------------------
 // Next card
 // -----------------------------------------------------
-
-$hitButton.on("click", () => {
-  cardArrayIndexNum++;
-
-  //! deals the cards
-  let $cardDealt = $("<img>");
-  $cardDealt.attr("src", `${cardDeck[cardArrayIndexNum].cardSvg}`);
-
-  $cardDealt.addClass("showing");
-  $middleShow.append($cardDealt);
-
-  addUpTheCount();
-  showRunningCount();
-  showTheCount();
-});
