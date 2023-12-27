@@ -167,7 +167,7 @@ body {
 
 .cards-in-play {
   height: 30vh;
-  width: 400px;
+  width: calc(100svh / 3);
   /* position: absolute; */
   display: flex;
   flex-direction: row;
@@ -181,21 +181,38 @@ body {
   width: var(--cardsize);
   /* margin-left: -50px; */
 }
-.showing:nth-child(odd) {
+.showing:nth-child() {
   transform: translateX(20px) translateY(-20px);
+}
+
+.play-info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-stat-spacer {
+  min-width: 5ch;
 }
 
 .bet-area {
   background-color: var(--g400);
-  width: 60px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   border: 2px solid var(--g400);
-  padding: 24px;
+  padding: 18px;
   border-radius: 12px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   align-self: center;
+  box-sizing: border-box;
+}
+
+.added-number {
+  width: 5ch;
+  text-align: right;
 }
 
 .on {
