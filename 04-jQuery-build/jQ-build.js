@@ -122,10 +122,10 @@ function addUpPlayersCurrentGameCards() {
   console.log(cardDeck[cardArrayIndexNum].value);
 
   console.log(playerCardsArray);
-  for (i = 0; playerCardsArray; i++) {
-    let playerCurrentGameCount = 0;
-    playerCurrentGameCount += playerCardsArray[i];
-  }
+  // for (i = 0; playerCardsArray; i++) {
+  //   let playerCurrentGameCount = 0;
+  //   playerCurrentGameCount += playerCardsArray[i];
+  // }
   console.log(playerCurrentGameCount);
 }
 
@@ -133,7 +133,7 @@ function displayPlayersCardsOffset() {}
 
 $hitButton.on("click", () => {
   cardArrayIndexNum++;
-  addUpPlayersCurrentGameCards();
+  // addUpPlayersCurrentGameCards();
 
   //! deals the cards
   let $cardDealt = $("<img>");
@@ -169,3 +169,9 @@ reset.addEventListener("click", () => {
 // -----------------------------------------------------
 // Next card
 // -----------------------------------------------------
+
+// -----------------------------------------------------
+// Testing card placement offset with jQuery
+// -----------------------------------------------------
+
+const $player1 = $("#player-1");

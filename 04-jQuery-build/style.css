@@ -190,6 +190,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 0 16px;
 }
 
 .left-stat-spacer {
@@ -212,7 +213,7 @@ body {
 
 .added-number {
   width: 5ch;
-  text-align: right;
+  text-align: center;
 }
 
 .on {
