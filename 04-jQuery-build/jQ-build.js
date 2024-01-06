@@ -1,3 +1,6 @@
+// -----------------------------------------------------
+// Card Assembly
+// -----------------------------------------------------
 const suits = ["01", "02", "03", "04"];
 const cardNums = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11J", "12Q", "13K"];
 let cardDeck = [];
@@ -10,13 +13,6 @@ let cardObjectTemplate = {
 };
 
 let cardArrayIndexNum = -1;
-const $leftShow = $("#player-left-show");
-const $middleShow = $("#player-middle-show");
-const $rightShow = $("#player-right-show");
-const $doubleButton = $("#double");
-const $hitButton = $("#hit");
-const $standButton = $("#stand");
-const $dealButton = $("#deal");
 
 function makeCardArray(deckCount) {
   suits.forEach((s) => {
@@ -72,8 +68,69 @@ function showDeck() {
 }
 
 makeCardArray(2);
+console.log(cardDeck);
 
-function clearDeckCards() {
+const cardOffsetValue = -20; // Card overlap CSS value
+
+// -----------------------------------------------------
+// Players' arrays
+// -----------------------------------------------------
+// Player's Areas
+const $dealer = $("#dealer");
+const $player0 = $("#player-0");
+const $player1 = $("#player-1");
+const $player2 = $("#player-2");
+const $player3 = $("#player-3");
+const $player4 = $("#player-4");
+const $player5 = $("#player-5");
+const $player6 = $("#player-6");
+
+// Players' Array
+const players = [
+  {
+    role: "dealer",
+    name: "dealer",
+    jq: $("#dealer"),
+    active: true,
+    cards: [],
+    sumValue: 0,
+  },
+];
+
+function createPlayers() {
+  for (i = 1; i < 8; i++) {
+    let playerTemplate = {
+      role: `player${i}`,
+      name: `player-${i}`,
+      jqCards: $(`#player-${i}`),
+      jqValue: $(`#sum-value-p${i}`),
+      active: false,
+      cards: [],
+      sumValue: 0,
+    };
+    players.push(playerTemplate);
+  }
+}
+createPlayers();
+
+players[1].active = true;
+players[2].active = true;
+players[3].active = true;
+
+console.log(players);
+
+// Buttons jQ
+const $doubleButton = $("#double");
+const $hitButton = $("#hit");
+const $standButton = $("#stand");
+const $dealButton = $("#deal");
+
+// Cards-in-play
+const $cardsInPlay = $(".cards-in-play");
+const $addedNumber = $(".added-number");
+
+// Reset || Global Counting Functions
+function eraseDeckShowCards() {
   const $fullDeckDiv = $("#full-deck");
   $fullDeckDiv.html("");
 }
@@ -94,9 +151,11 @@ function getDeckAmount() {
   // return $deckInput.value;
 }
 
-function clearCardsInPlay() {
+function clearPlayersCardsAndCount() {
   const $cardsInPlay = $(".cards-in-play");
+  const $addedNumber = $(".added-number");
   $cardsInPlay.html("");
+  $addedNumber.html("");
 }
 
 getDeckAmount();
@@ -111,67 +170,115 @@ let $rCount = 0;
 showDeck();
 
 // -----------------------------------------------------
+// GUI Functions
+// -----------------------------------------------------
+
+// -----------------------------------------------------
 // Set Player Card Values and Formatting
 // -----------------------------------------------------
-let playerCurrentGameCards = 0;
-const cardOffsetValue = -20;
-let playerCardsArray = [];
-
-function addUpPlayersCurrentGameCards() {
-  playerCardsArray.push(cardDeck[cardArrayIndexNum].value);
-  console.log(cardDeck[cardArrayIndexNum].value);
-
-  console.log(playerCardsArray);
-  // for (i = 0; playerCardsArray; i++) {
-  //   let playerCurrentGameCount = 0;
-  //   playerCurrentGameCount += playerCardsArray[i];
-  // }
-  console.log(playerCurrentGameCount);
-}
-
-function displayPlayersCardsOffset() {}
-
-$hitButton.on("click", () => {
-  cardArrayIndexNum++;
-  // addUpPlayersCurrentGameCards();
-
-  //! deals the cards
-  let $cardDealt = $("<img>");
-  $cardDealt.attr("src", `${cardDeck[cardArrayIndexNum].cardSvg}`);
-
-  $cardDealt.addClass("showing");
-  $middleShow.append($cardDealt);
-
-  addUpTheCount();
-  showRunningCount();
-  showTheCount();
-});
 
 // -----------------------------------------------------
-// shuffle
+// Shuffle Button Run
 // -----------------------------------------------------
 const reset = document.querySelector("#reset");
 reset.addEventListener("click", () => {
   makeCardArray(getDeckAmount());
-  clearDeckCards();
-  clearCardsInPlay();
+  eraseDeckShowCards();
+  clearPlayersCardsAndCount();
   shuffle(cardDeck);
   showDeck();
   showTheCount();
   $theCount = 0;
   $runCount.innerText = 0;
   cardArrayIndexNum = -1;
-  $middleShow.innerHTML = "";
   playerCardsArray = [];
-  console.log(cardDeck[18].value);
+});
+
+//! -----------------------------------------------------
+//! Next card button run
+//! -----------------------------------------------------
+$hitButton.on("click", () => {
+  cardArrayIndexNum++;
+  let playerNumber = 1;
+  let amountOfCards = players[playerNumber].cards.length;
+  console.log(players[playerNumber].cards);
+  players[playerNumber].cards.push(cardDeck[cardArrayIndexNum]);
+  printAddedPlayersValue(playerNumber);
+  printPlayersCards(playerNumber);
+  /*
+  // addUpPlayersCurrentGameCards();
+
+  // deals the cards
+  let $cardDealt = $("<img>");
+  $cardDealt.attr("src", `${cadDreck[cardArrayIndexNum].cardSvg}`);
+
+  $cardDealt.addClass("showing");
+  $player1.append($cardDealt);
+  player1Cards.push(cardDeck[cardArrayIndexNum]);
+  player1SumValue += cardDeck[cardArrayIndexNum].value;
+
+  addUpTheCount();
+  showRunningCount();
+  showTheCount();
+  console.log(player1Cards);
+  console.log(player1SumValue);
+  */
 });
 
 // -----------------------------------------------------
-// Next card
+// Deal Button
 // -----------------------------------------------------
+$dealButton.on("click", () => {
+  clearPlayersCardsAndCount();
+  emptyPlayersCardArray();
+});
+
+function emptyPlayersCardArray() {
+  for (i = 0; i < players.length; i++) {
+    players[i].cards = [];
+  }
+}
 
 // -----------------------------------------------------
 // Testing card placement offset with jQuery
 // -----------------------------------------------------
 
-const $player1 = $("#player-1");
+// -----------------------------------------------------
+// Distribute cards mechanics
+// -----------------------------------------------------
+
+// -----------------------------------------------------
+// Testing values
+// -----------------------------------------------------
+players[2].cards = [
+  { cardName: "01-07", mitCtValue: 0, cardSvg: "../SVGs/01-07.svg", value: 7 },
+  { cardName: "03-03", mitCtValue: 1, cardSvg: "../SVGs/03-03.svg", value: 3 },
+  { cardName: "02-03", mitCtValue: 1, cardSvg: "../SVGs/02-03.svg", value: 3 },
+  { cardName: "04-08", mitCtValue: 0, cardSvg: "../SVGs/04-08.svg", value: 8 },
+];
+
+function addUpPlayingValues(playerNumber) {
+  const player = players[playerNumber];
+  const cards = player.cards;
+  player.sumValue = cards.reduce((n, { value }) => n + value, 0);
+  return player;
+}
+
+function printAddedPlayersValue(playerNumber) {
+  player = addUpPlayingValues(playerNumber);
+  let $playerCountBox = player.jqValue;
+  $playerCountBox.html(player.sumValue);
+}
+
+function printPlayersCards(playerNumber) {
+  player = players[playerNumber];
+  console.log(player);
+  cards = players[playerNumber].cards;
+  console.log(cards);
+  let $playerCardBox = player.jqCards;
+  for (i = 0; i < player.cards.length; i++) {
+    $playerCardBox.append(`<img src="${cards[i].cardSvg}" class="showing" style="top: ${i * cardOffsetValue * 1.5}px; right: ${i * cardOffsetValue}px; z-index: ${i}">`);
+  }
+}
+printAddedPlayersValue(2);
+printPlayersCards(2);

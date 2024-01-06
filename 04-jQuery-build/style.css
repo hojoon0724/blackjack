@@ -166,9 +166,9 @@ body {
 }
 
 .cards-in-play {
-  height: 30vh;
-  width: calc(100svh / 3);
-  /* position: absolute; */
+  height: 140px;
+  width: 100px;
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -179,6 +179,8 @@ body {
   position: absolute;
   animation: fadeIn 0.5s;
   width: var(--cardsize);
+  box-shadow: 1px 1px 4px black;
+  border-radius: 3px;
   /* margin-left: -50px; */
 }
 .showing:nth-child() {
