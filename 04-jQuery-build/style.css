@@ -1,6 +1,6 @@
-div {
+/* div {
   border: 1px red solid;
-}
+} */
 
 :root {
   --table-green: #01422c;
@@ -34,7 +34,7 @@ div {
 body {
   background-color: var(--table-green);
   color: var(--white);
-  font-family: "Roboto Mono", monospace;
+  font-family: 'Roboto Mono', monospace;
   margin: 0px;
 }
 
@@ -116,7 +116,7 @@ body {
   background-color: var(--g100);
   box-sizing: border-box;
   margin: auto;
-  font-family: "Roboto Mono";
+  font-family: 'Roboto Mono';
   font-size: 1rem;
   transition: 0.2s;
 }
@@ -173,6 +173,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 16px;
 }
 
 .showing {

@@ -6,8 +6,15 @@
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400;600;700&display=swap" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
 
     <link rel="stylesheet" href="./style.css" />
     <script src="./jQ-build.js" defer></script>
@@ -26,7 +33,10 @@
         </div>
       </div>
       <div class="top-right">
-        <div class="decks">Decks: <input id="deck-amount" placeholder="1" type="number" value="2" /></div>
+        <div class="decks">
+          Decks:
+          <input id="deck-amount" placeholder="1" type="number" value="2" />
+        </div>
         <div class="reset">
           <button class="reset-btn" id="reset">Shuffle</button>
         </div>
@@ -43,7 +53,10 @@
       <div class="cards-container">
         <div class="dealer">
           <div class="dealer-container">
-            <div class="dealer-cards" id="dealer">cards</div>
+            <div class="dealer-cards" id="dealer" style="position: relative">
+              <img src="../SVGs/01-07.svg" class="showing" style="top: 0px; right: 0px; z-index: 0" />
+              <img src="../SVGs/03-03.svg" class="showing" style="right: -110px; z-index: 1" />
+            </div>
           </div>
         </div>
 

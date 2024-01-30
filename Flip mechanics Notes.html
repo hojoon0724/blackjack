@@ -1,0 +1,43 @@
+<h1>Flip mechanics</h1>
+
+<div class="card-container">
+  <div class="card-div">
+    <div class="front-div">Front of the card</div>
+    <div class="rear-div">This gets revealed</div>
+  </div>
+</div>
+
+<style>
+  .card-container {
+    display: flex;
+  }
+
+  .card-div {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.8, 0, 0.75, 0.2);
+    width: 150px;
+  }
+
+  .card-container:hover .card-div {
+    transform: rotateY(-180deg);
+  }
+
+  .front-div,
+  .rear-div {
+    height: 200px;
+    width: 150px;
+    position: absolute;
+    backface-visibility: hidden;
+  }
+
+  .front-div {
+    background-color: salmon;
+    z-index: 2;
+  }
+
+  .rear-div {
+    background-color: aquamarine;
+    transform: rotateY(180deg);
+  }
+</style>
